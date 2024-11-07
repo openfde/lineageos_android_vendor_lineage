@@ -71,6 +71,7 @@ function breakfast()
     local variant=$2
     source ${ANDROID_BUILD_TOP}/vendor/lineage/vars/aosp_target_release
 
+    which_organization=lineage
     if [ $# -eq 0 ]; then
         # No arguments, so let's have the full menu
         lunch
@@ -84,7 +85,10 @@ function breakfast()
                 variant="userdebug"
             fi
 
-            lunch lineage_$target-$aosp_target_release-$variant
+            if (echo -n $1 | grep -q -e "^fde_") ; then
+                which_organization=openfde
+            fi
+            lunch $which_organization_$target-$aosp_target_release-$variant
         fi
     fi
     return $?
