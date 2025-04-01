@@ -17,7 +17,7 @@ PRODUCT_PACKAGES += \
 
 ifneq ($(PRODUCT_NO_CAMERA),true)
 PRODUCT_PACKAGES += \
-    Aperture
+    Camera2
 endif
 
 ifneq ($(TARGET_EXCLUDES_AUDIOFX),true)
